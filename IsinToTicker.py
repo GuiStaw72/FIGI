@@ -6,12 +6,14 @@ ISIN -> Ticker via OpenFIGI (mapping API)
 - Gère le traitement en masse, la limitation de débit et l'export CSV/Excel.
 - Priorise des résultats "Equity" et peut favoriser certains échanges (exchCode).
 """
-
+import FIGI_KEY
 import os
 import time
 import pandas as pd
 import requests
 from typing import List, Optional, Dict
+# Clé API OpenFIGI (à remplacer par votre propre clé)
+API_KEY = '6ff848ae-85fa-472e-9e59-a37f6f3ff963'
 
 OPENFIGI_URL = "https://api.openfigi.com/v3/mapping"  # Endpoint officiel de mapping
 
@@ -152,7 +154,8 @@ if __name__ == "__main__":
 
     df = map_isins_to_tickers(
         isins,
-        api_key=args.api_key,
+       # api_key=args.api_key,
+        api_key=API_KEY,
         preferred_exch=args.preferred_exch,
         mic=args.mic,
         exch_code=args.exch_code,
